@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>李白骑自行车</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #f5f0df;
+      font-family: sans-serif;
+    }
+    svg {
+      width: min(900px, 96vw);
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px #51452a22;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg"
+       role="img" aria-labelledby="title desc">
+    <title id="title">李白骑自行车</title>
+    <desc id="desc">穿着唐代长袍的李白，迎风骑着自行车。</desc>
+
+    <defs>
+      <linearGradient id="sky" x2="0" y2="1">
+        <stop stop-color="#d8eee5"/>
+        <stop offset="1" stop-color="#faf1d8"/>
+      </linearGradient>
+      <linearGradient id="robe" x2="1" y2="1">
+        <stop stop-color="#477d72"/>
+        <stop offset="1" stop-color="#28584f"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 背景 -->
+    <rect width="900" height="560" rx="20" fill="url(#sky)"/>
+    <circle cx="740" cy="115" r="47" fill="#f3c96b"/>
+    <path d="M0 360 Q130 300 260 355 T520 340 T900 350 V560 H0Z"
+          fill="#d7dfbd"/>
+    <path d="M0 415 Q190 350 370 412 T720 390 T900 410 V560 H0Z"
+          fill="#b5c79e"/>
+
+    <!-- 远山 -->
+    <path d="M0 380 L125 245 L230 365 L355 215 L505 380Z"
+          fill="#9ab5a1" opacity=".58"/>
+    <path d="M440 375 L585 250 L710 370 L810 275 L900 365 V430 H440Z"
+          fill="#89a897" opacity=".55"/>
+
+    <!-- 风和云 -->
+    <g fill="none" stroke="#fffaf0" stroke-width="5" stroke-linecap="round" opacity=".8">
+      <path d="M115 160h105q18 0 18-15t-18-15"/>
+      <path d="M600 190h92q17 0 17-14t-17-14"/>
+      <path d="M130 215h55"/>
+    </g>
+
+    <!-- 自行车车轮 -->
+    <g fill="none" stroke="#344b47" stroke-width="7">
+      <circle cx="265" cy="420" r="77"/>
+      <circle cx="600" cy="420" r="77"/>
+    </g>
+    <g fill="none" stroke="#83958a" stroke-width="2">
+      <circle cx="265" cy="420" r="69"/>
+      <circle cx="600" cy="420" r="69"/>
+      <path d="M265 343v154 M188 420h154 M211 366l108 108 M319 366L211 474"/>
+      <path d="M600 343v154 M523 420h154 M546 366l108 108 M654 366L546 474"/>
+    </g>
+
+    <!-- 车架 -->
+    <g fill="none" stroke="#bd654b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M265 420 L355 325 L425 420 L265 420"/>
+      <path d="M355 325 L505 325 L425 420"/>
+      <path d="M505 325 L600 420"/>
+      <path d="M495 325 L515 292"/>
+      <path d="M489 290h54"/>
+      <path d="M345 315h48"/>
+    </g>
+    <g stroke="#344b47" stroke-width="6" stroke-linecap="round">
+      <path d="M245 420h40"/>
+      <path d="M580 420h40"/>
+    </g>
+    <circle cx="425" cy="420" r="11" fill="#e4bd69"/>
+    <path d="M425 420l-30 23 M425 420l31-20" stroke="#344b47" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- 李白的腿与鞋 -->
+    <path d="M413 324 Q455 350 456 389 L425 420"
+          fill="none" stroke="#263f3b" stroke-width="22" stroke-linecap="round"/>
+    <path d="M360 332 Q337 368 368 397 L395 420"
+          fill="none" stroke="#263f3b" stroke-width="22" stroke-linecap="round"/>
+    <path d="M411 418l27 8 M383 418l24 9"
+          stroke="#e7c78d" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- 飘起的长袍下摆 -->
+    <path d="M355 211
+             Q325 265 284 307
+             Q326 300 357 282
+             Q328 323 298 344
+             Q366 333 400 290
+             L430 230Z"
+          fill="#3b7167" stroke="#28584f" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M333 303q25-8 45-29 M328 331q28-8 48-27"
+          fill="none" stroke="#d2b477" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- 身体与唐代长袍 -->
+    <path d="M375 180
+             Q411 170 438 194
+             L461 245
+             Q436 272 421 321
+             Q390 332 349 310
+             Q366 265 345 226Z"
+          fill="url(#robe)" stroke="#244b44" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M390 185 Q405 230 430 251 L409 270 Q381 239 369 201Z"
+          fill="#d6b96f"/>
+    <path d="M374 222 Q403 242 439 244"
+          fill="none" stroke="#e6d29a" stroke-width="4"/>
+    <path d="M355 304 Q385 316 417 309"
+          fill="none" stroke="#d6b96f" stroke-width="5"/>
+
+    <!-- 手臂 -->
+    <path d="M370 207 Q414 245 484 286"
+          fill="none" stroke="#3b7167" stroke-width="22" stroke-linecap="round"/>
+    <path d="M484 286 Q503 293 513 290"
+          fill="none" stroke="#edc18d" stroke-width="15" stroke-linecap="round"/>
+    <path d="M425 207 Q459 232 496 279"
+          fill="none" stroke="#28584f" stroke-width="19" stroke-linecap="round"/>
+    <path d="M496 279 Q503 288 514 288"
+          fill="none" stroke="#edc18d" stroke-width="14" stroke-linecap="round"/>
+
+    <!-- 头部、发髻和胡须 -->
+    <path d="M373 111 Q374 78 406 78 Q438 81 441 113
+             Q437 144 408 151 Q379 143 373 111Z"
+          fill="#efc995" stroke="#49392d" stroke-width="4"/>
+    <path d="M376 110 Q368 77 394 68 Q420 54 439 81
+             Q446 96 439 113 Q428 94 409 91
+             Q393 106 376 110Z"
+          fill="#252b29"/>
+    <circle cx="410" cy="69" r="15" fill="#252b29"/>
+    <path d="M390 140 Q405 151 424 139
+             Q422 171 406 184
+             Q393 165 390 140Z"
+          fill="#382f29"/>
+    <path d="M382 122 Q393 127 400 121"
+          fill="none" stroke="#49392d" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="427" cy="115" r="3.5" fill="#302c28"/>
+    <path d="M418 125q8 4 14-1"
+          fill="none" stroke="#9f5a49" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 衣袖飘带 -->
+    <path d="M369 208 Q322 192 290 212 Q326 214 347 237"
+          fill="none" stroke="#477d72" stroke-width="13" stroke-linecap="round"/>
+    <path d="M365 213 Q326 199 305 207"
+          fill="none" stroke="#d6b96f" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- 小装饰 -->
+    <g fill="#fff4d4" opacity=".9">
+      <path d="M127 285l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/>
+      <path d="M765 220l4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/>
+    </g>
+
+    <text x="450" y="520" text-anchor="middle"
+          font-size="27" fill="#405b4f" font-family="serif">
+      诗仙李白 · 御风而行
+    </text>
+  </svg>
+</body>
+</html>
