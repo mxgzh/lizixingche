@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李白骑自行车 · 动态 SVG</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #e9e2d1;
+    font-family: "Noto Serif SC", "Songti SC", serif;
+  }
+
+  svg {
+    display: block;
+    width: min(100%, 960px);
+    height: auto;
+    background: #f6f0df;
+    box-shadow: 0 20px 60px #292b2430;
+  }
+
+  .cloud {
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+  .cloud.two { animation-duration: 16s; }
+
+  .rider {
+    transform-box: view-box;
+    transform-origin: 445px 300px;
+    animation: bounce .55s ease-in-out infinite alternate;
+  }
+
+  .robe-tail {
+    transform-box: view-box;
+    transform-origin: 390px 220px;
+    animation: flutter .8s ease-in-out infinite alternate;
+  }
+
+  .spokes {
+    transform-box: view-box;
+    transform-origin: center;
+    animation: spin 1.15s linear infinite;
+  }
+  .spokes.front { transform-origin: 690px 443px; }
+  .spokes.rear  { transform-origin: 285px 443px; }
+
+  .crank {
+    transform-box: view-box;
+    transform-origin: 440px 443px;
+    animation: spin .9s linear infinite;
+  }
+
+  .dust {
+    animation: puff 1.2s ease-out infinite;
+  }
+  .dust.d2 { animation-delay: .4s; }
+  .dust.d3 { animation-delay: .8s; }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce {
+    from { transform: translateY(-1px) rotate(-.3deg); }
+    to   { transform: translateY(3px) rotate(.3deg); }
+  }
+
+  @keyframes flutter {
+    from { transform: skewY(-1deg) translateX(0); }
+    to   { transform: skewY(2deg) translateX(-7px); }
+  }
+
+  @keyframes drift {
+    from { transform: translateX(-10px); }
+    to   { transform: translateX(28px); }
+  }
+
+  @keyframes puff {
+    0%   { opacity: 0; transform: translate(0, 0) scale(.5); }
+    35%  { opacity: .6; }
+    100% { opacity: 0; transform: translate(-18px, -12px) scale(1.4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 8s !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<svg viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-labelledby="title desc">
+  <title id="title">李白骑自行车</title>
+  <desc id="desc">月夜山间，李白骑自行车前行，车轮和脚踏持续转动。</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#d9e9dc"/>
+      <stop offset="1" stop-color="#f6edda"/>
+    </linearGradient>
+    <linearGradient id="robe" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#5d8875"/>
+      <stop offset="1" stop-color="#315d53"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 天空与月亮 -->
+  <rect width="960" height="620" fill="url(#sky)"/>
+  <circle cx="770" cy="135" r="55" fill="#edcf83"/>
+  <circle cx="770" cy="135" r="42" fill="#f6dfa0" opacity=".65"/>
+
+  <!-- 浮动的云 -->
+  <g class="cloud" fill="none" stroke="#fffaf0" stroke-width="5"
+     stroke-linecap="round" opacity=".8">
+    <path d="M95 155h100q20 0 20-15t-20-15"/>
+    <path d="M600 205h86q18 0 18-14t-18-14"/>
+  </g>
+  <g class="cloud two" fill="none" stroke="#fffaf0" stroke-width="4"
+     stroke-linecap="round" opacity=".65">
+    <path d="M150 230h60"/>
+    <path d="M690 255h70"/>
+  </g>
+
+  <!-- 远山与地面 -->
+  <path d="M0 375 130 250l105 112 120-170 142 187 115-133 130 128 92-110 126 112v100H0Z"
+        fill="#a5b9a3"/>
+  <path d="M0 412 180 310l115 94 154-119 142 125 136-113 233 111v90H0Z"
+        fill="#829e8a"/>
+  <path d="M0 453q160-35 300 0t300 0 360 0v167H0Z" fill="#c2cda9"/>
+  <path d="M0 490q200-30 380 0t580-3v133H0Z" fill="#b1c097"/>
+
+  <!-- 车轮外胎 -->
+  <g fill="none" stroke="#293d38" stroke-width="7">
+    <circle cx="285" cy="443" r="88"/>
+    <circle cx="690" cy="443" r="88"/>
+  </g>
+
+  <!-- 旋转的辐条 -->
+  <g class="spokes rear" fill="none" stroke="#75877a" stroke-width="1.7">
+    <circle cx="285" cy="443" r="79"/>
+    <path d="M285 364v158 M206 443h158 M229 387l112 112 M341 387 229 499"/>
+  </g>
+  <g class="spokes front" fill="none" stroke="#75877a" stroke-width="1.7">
+    <circle cx="690" cy="443" r="79"/>
+    <path d="M690 364v158 M611 443h158 M634 387l112 112 M746 387 634 499"/>
+  </g>
+
+  <!-- 自行车车架 -->
+  <g fill="none" stroke="#a95640" stroke-width="8"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M285 443 375 337 440 443 285 443"/>
+    <path d="M375 337h209L440 443"/>
+    <path d="M584 337 690 443"/>
+    <path d="M584 337 600 296"/>
+    <path d="M588 294h46"/>
+  </g>
+
+  <!-- 座垫 -->
+  <path d="M352 323q24-9 51 0" fill="none"
+        stroke="#293d38" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- 随脚踏旋转的曲柄和踏板 -->
+  <g class="crank" fill="none" stroke="#293d38" stroke-width="6"
+     stroke-linecap="round">
+    <circle cx="440" cy="443" r="9" fill="#e2bc6e" stroke="#293d38"/>
+    <path d="M440 443l0-31 M440 443l0 31"/>
+    <path d="M427 412h26 M427 474h26"/>
+  </g>
+
+  <!-- 李白：腿、袍子、手臂与头部 -->
+  <g class="rider">
+    <!-- 腿与靴子 -->
+    <path d="M398 286q48 29 69 66l-5 67"
+          fill="none" stroke="#293d38" stroke-width="22" stroke-linecap="round"/>
+    <path d="M379 286q-29 40-11 78l43 95"
+          fill="none" stroke="#293d38" stroke-width="21" stroke-linecap="round"/>
+    <path d="M454 417q12-9 27 0 M401 455q12-8 25 1"
+          fill="none" stroke="#e4bf75" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- 飘动的袍摆 -->
+    <g class="robe-tail">
+      <path d="M383 194q-48 51-126 76 48 8 83-9-44 47-112 57 77 14 142-32-20 39-48 56 72-20 104-72l-5-70Z"
+            fill="#416f62" stroke="#294f47" stroke-width="4"
+            stroke-linejoin="round"/>
+      <path d="M293 283q38-4 63-29m-84 61q45-6 78-34"
+            fill="none" stroke="#d7bd7d" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <!-- 身体与唐代长袍 -->
+    <path d="M389 171q38-11 66 18l29 50q-29 27-58 78-34 9-73-17 26-51 5-89Z"
+          fill="url(#robe)" stroke="#294f47" stroke-width="4"/>
+    <path d="M390 175q16 44 56 66l-18 22q-34-23-59-60Z" fill="#d6bc7b"/>
+    <path d="M371 217q39 25 96 24" fill="none" stroke="#ead9a6" stroke-width="4"/>
+    <path d="M353 298q37 17 73 7" fill="none" stroke="#d6bc7b" stroke-width="5"/>
+
+    <!-- 手臂与手 -->
+    <path d="M444 207q58 28 143 82"
+          fill="none" stroke="#416f62" stroke-width="20" stroke-linecap="round"/>
+    <path d="M579 286q14 7 27 5"
+          fill="none" stroke="#ebc191" stroke-width="13" stroke-linecap="round"/>
+    <path d="M564 278l17 16" stroke="#d6bc7b" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- 头部 -->
+    <path d="M394 122q4-31 35-35 35 2 41 33-2 31-30 46-28-8-41-23Z"
+          fill="#edc493" stroke="#46372d" stroke-width="4"/>
+    <path d="M398 124q-10-30 13-48 29-21 53 2 15 15 6 42-11-19-31-20-20 19-41 24Z"
+          fill="#292d2a"/>
+    <circle cx="438" cy="72" r="15" fill="#292d2a"/>
+    <path d="M426 70q12-16 25-1" fill="none" stroke="#d4b66d"
+          stroke-width="4" stroke-linecap="round"/>
+
+    <!-- 胡须与表情 -->
+    <path d="M409 145q19 12 42-1-2 29-18 44-17-17-24-43Z" fill="#3b332c"/>
+    <path d="M407 130q10 4 18-1" fill="none" stroke="#49392d"
+          stroke-width="3" stroke-linecap="round"/>
+    <circle cx="455" cy="126" r="3.5" fill="#302c28"/>
+    <path d="M448 137q9 4 16-1" fill="none" stroke="#a75d49"
+          stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- 车轮旁的动态尘点 -->
+  <g fill="#f7f0dc">
+    <circle class="dust" cx="185" cy="475" r="5"/>
+    <circle class="dust d2" cx="205" cy="490" r="4"/>
+    <circle class="dust d3" cx="174" cy="501" r="3"/>
+  </g>
+
+  <!-- 标题与题款 -->
+  <text x="66" y="91" font-size="34" letter-spacing="7"
+        fill="#344c42">月下骑行</text>
+  <path d="M67 108h174" stroke="#a95640" stroke-width="3"/>
+  <text x="69" y="137" font-size="15" letter-spacing="3"
+        fill="#786c50">诗仙李白 · 御风而行</text>
+  <text x="480" y="580" text-anchor="middle" font-size="17"
+        letter-spacing="5" fill="#52685a">长风破浪会有时</text>
+</svg>
+
+</body>
+</html>
